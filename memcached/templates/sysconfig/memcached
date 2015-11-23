@@ -2,8 +2,8 @@
 
 PORT="{{ get_config_item('port') }}"
 USER="{{ get_config_item('user') }}"
-MAXCONN="{{ get_config_item('max_connections') }}"
-CACHESIZE="{{ get_config_item('memory_cap') }}"
+MAXCONN="{{ salt['pillar.get']('memcached:max_connections', 2048)}}"
+CACHESIZE="{{ salt['pillar.get']('memcached:memory_cap', 1024) }}"
 OPTIONS="-l {{ get_config_item('listen_address') }}"
 
 {% if get_config_item('lock_paged_memory') == 'True' %}
